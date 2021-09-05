@@ -10,19 +10,19 @@ class QuantileDiscretizer:
 		self.data = data
 		self.N = N
 
-		# n_points_per_bin = int(np.ceil(len(data) / N))
-		# obs_sorted = np.sort(data, axis=0)
-		# thresholds = obs_sorted[::n_points_per_bin, :]
-		# maxs = data.max(axis=0, keepdims=True)
-
-		# ## [ (N + 1) x dim ]
-		# self.thresholds = np.concatenate([thresholds, maxs], axis=0)
-
-		threshold_inds = np.linspace(0, len(data) - 1, N + 1, dtype=int)
+		n_points_per_bin = int(np.ceil(len(data) / N))
 		obs_sorted = np.sort(data, axis=0)
+		thresholds = obs_sorted[::n_points_per_bin, :]
+		maxs = data.max(axis=0, keepdims=True)
 
 		## [ (N + 1) x dim ]
-		self.thresholds = obs_sorted[threshold_inds, :]
+		self.thresholds = np.concatenate([thresholds, maxs], axis=0)
+
+		# threshold_inds = np.linspace(0, len(data) - 1, N + 1, dtype=int)
+		# obs_sorted = np.sort(data, axis=0)
+
+		# ## [ (N + 1) x dim ]
+		# self.thresholds = obs_sorted[threshold_inds, :]
 
 		## [ N x dim ]
 		self.diffs = self.thresholds[1:] - self.thresholds[:-1]

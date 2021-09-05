@@ -29,6 +29,7 @@ class Trainer:
         config = self.config
         optimizer = self.get_optimizer(model)
         model.train(True)
+        vocab_size = dataset.N
 
         loader = DataLoader(dataset, shuffle=True, pin_memory=True,
                             batch_size=config.batch_size,
@@ -55,7 +56,8 @@ class Trainer:
 
                 # decay the learning rate based on our progress
                 if config.lr_decay:
-                    self.n_tokens += batch[0].numel()
+                    y = batch[-2]
+                    self.n_tokens += (y != vocab_size).sum() # number of tokens processed this step
                     if self.n_tokens < config.warmup_tokens:
                         # linear warmup
                         lr_mult = float(self.n_tokens) / float(max(1, config.warmup_tokens))

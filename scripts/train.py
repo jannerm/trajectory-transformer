@@ -76,9 +76,8 @@ model.to(args.device)
 ####### trainer #######
 #######################
 
-n_epoch_tokens = len(dataset) * block_size ## number of tokens seen per epoch
-warmup_tokens = 2 * n_epoch_tokens
-final_tokens = 20 * n_epoch_tokens
+warmup_tokens = len(dataset) * block_size ## number of tokens seen per epoch
+final_tokens = 20 * warmup_tokens
 
 trainer_config = utils.Config(
     utils.Trainer,
@@ -91,7 +90,7 @@ trainer_config = utils.Config(
     weight_decay=0.1, # only applied on matmul weights
     # learning rate decay: linear warmup followed by cosine decay to 10% of original
     lr_decay=args.lr_decay,
-    warmup_tokens=warmup_tokens, #512*20,
+    warmup_tokens=warmup_tokens,
     final_tokens=final_tokens,
     ## dataloader
     num_workers=0,
