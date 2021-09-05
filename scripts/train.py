@@ -76,8 +76,9 @@ model.to(args.device)
 ####### trainer #######
 #######################
 
-warmup_tokens = len(dataset) * block_size ## approximately one epoch
-final_tokens = 20 * warmup_tokens ## twenty epochs
+n_epoch_tokens = len(dataset) * block_size ## number of tokens seen per epoch
+warmup_tokens = 2 * n_epoch_tokens
+final_tokens = 20 * n_epoch_tokens
 
 trainer_config = utils.Config(
     utils.Trainer,

@@ -69,7 +69,6 @@ base = {
 
         'max_context_transitions': 5,
         'prefix_context': True,
-        'use_previous': False,
 
         'vis_freq': 50,
         'exp_name': watch(args_to_watch),

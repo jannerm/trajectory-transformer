@@ -5,7 +5,9 @@ DTYPE = torch.float
 DEVICE = 'cuda:0'
 
 def to_np(x):
-	return x.detach().cpu().numpy()
+	if torch.is_tensor(x):
+		x = x.detach().cpu().numpy()
+	return x
 
 def to_torch(x, dtype=None, device=None):
 	dtype = dtype or DTYPE

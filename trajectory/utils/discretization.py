@@ -10,6 +10,14 @@ class QuantileDiscretizer:
 		self.data = data
 		self.N = N
 
+		# n_points_per_bin = int(np.ceil(len(data) / N))
+		# obs_sorted = np.sort(data, axis=0)
+		# thresholds = obs_sorted[::n_points_per_bin, :]
+		# maxs = data.max(axis=0, keepdims=True)
+
+		# ## [ (N + 1) x dim ]
+		# self.thresholds = np.concatenate([thresholds, maxs], axis=0)
+
 		threshold_inds = np.linspace(0, len(data) - 1, N + 1, dtype=int)
 		obs_sorted = np.sort(data, axis=0)
 
@@ -37,8 +45,16 @@ class QuantileDiscretizer:
 		X = self.data[inds]
 		indices = self.discretize(X)
 		recon = self.reconstruct(indices)
+		## make sure reconstruction error is less than the max allowed per dimension
 		error = np.abs(X - recon).max(0)
 		assert (error <= self.diffs.max(axis=0)).all()
+		## re-discretize reconstruction and make sure it is the same as original indices
+		indices_2 = self.discretize(recon)
+		assert (indices == indices_2).all()
+		## reconstruct random indices
+		randint = np.random.randint(0, self.N, indices.shape)
+		randint_2 = self.discretize(self.reconstruct(randint))
+		assert (randint == randint_2).all()
 		print('✓')
 
 	def discretize(self, x, subslice=(None, None)):
@@ -126,7 +142,7 @@ class QuantileDiscretizer:
 
 	#---------------------------- wrappers for planning ----------------------------#
 
-	def rew_val_expectation(self, probs):
+	def value_expectation(self, probs):
 		'''
 			probs : [ B x 2 x ( N + 1 ) ]
 				extra token comes from termination
@@ -150,9 +166,9 @@ class QuantileDiscretizer:
 
 		return rewards, next_values
 
-	def rew_val_percentile(self, probs, percentile):
+	def value_fn(self, probs, percentile):
 		if percentile == 'mean':
-			return self.rew_val_expectation(probs)
+			return self.value_expectation(probs)
 		else:
 			## percentile should be interpretable as float,
 			## even if passed in as str because of command-line parser

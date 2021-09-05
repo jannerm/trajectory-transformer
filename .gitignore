@@ -12,3 +12,4 @@ slurm-*.out
 *.png
 *.pdf
 *.pkl
+mjkey.txt

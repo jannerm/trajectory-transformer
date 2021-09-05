@@ -1,10 +1,11 @@
 import time
 import math
+import re
 import pdb
 
 class Progress:
 
-	def __init__(self, total, name = 'Progress', ncol=3, max_length=20, indent=0, line_width=100, speed_update_freq=100):
+	def __init__(self, total, name = 'Progress', ncol=3, max_length=30, indent=8, line_width=100, speed_update_freq=100):
 		self.total = total
 		self.name = name
 		self.ncol = ncol
@@ -130,14 +131,21 @@ class Progress:
 		line = ' | '.join([self._format_param(param) for param in chunk])
 		return line
 
-	def _format_param(self, param):
+	def _format_param(self, param, str_length=8):
 		k, v = param
-		return '{} : {}'.format(k, v)[:self.max_length]
+		k = k.rjust(str_length)
+		if type(v) == float or hasattr(v, 'item'):
+			string = '{}: {:12.4f}'
+		else:
+			string = '{}: {}'
+			v = str(v).rjust(12)
+		return string.format(k, v)[:self.max_length]
 
 	def stamp(self):
 		if self.lines != ['']:
 			params = ' | '.join(self.lines)
 			string = '[ {} ] {}{} | {}'.format(self.name, self.fraction, params, self._speed)
+			string = re.sub(r'\s+', ' ', string)
 			self._clear()
 			print(string, end='\n')
 			self._skip_lines = 1

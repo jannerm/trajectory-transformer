@@ -51,7 +51,7 @@ def load_model(*loadpath, epoch=None, device='cuda:0'):
     print(f'\n[ utils/serialization ] Loaded config from {config_path}\n')
     print(config)
 
-    return model, config, epoch
+    return model, epoch
 
 def load_config(*loadpath):
     loadpath = os.path.join(*loadpath)
@@ -62,7 +62,7 @@ def load_config(*loadpath):
 
 def load_from_config(*loadpath):
     config = load_config(*loadpath)
-    return config.make(), config
+    return config.make()
 
 def load_args(*loadpath):
     from .setup import Parser
