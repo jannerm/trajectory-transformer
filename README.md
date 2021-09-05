@@ -28,7 +28,8 @@ python scripts/plan.py --dataset halfcheetah-medium-expert-v2 --horizon 4 --beam
 ### Docker
 
 ```
-cp ~/.mujoco/mjkey.txt azure/files/ && docker build -f azure/Dockerfile . -t trajectory
+cp ~/.mujoco/mjkey.txt azure/files/
+docker build -f azure/Dockerfile . -t trajectory
 ```
 
 Test the container with:
