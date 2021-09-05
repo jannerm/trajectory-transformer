@@ -39,7 +39,8 @@ docker build -f azure/Dockerfile . -t trajectory
 Test the container:
 ```
 docker run -it --rm --gpus all \
-	--mount type=bind,source=/home/janner/mount/trajectory-transformer,target=/home/code \
+	--mount type=bind,source=$PWD,target=/home/code \
+	--mount type=bind,source=$HOME/.d4rl,target=/root/.d4rl \
 	trajectory \
 	bash -c \
 	"export PYTHONPATH=$PYTHONPATH:/home/code && \
