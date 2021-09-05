@@ -1,6 +1,6 @@
 ## Trajectory Transformer
 
-Code release for [Offline Reinforcement Learning as One Big Sequence Modeling Problem](https://arxiv.org/abs/2106.02039).
+Code release for [Reinforcement Learning as One Big Sequence Modeling Problem](https://arxiv.org/abs/2106.02039).
 
 ### Installation
 
