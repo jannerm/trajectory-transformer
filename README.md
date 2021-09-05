@@ -22,17 +22,19 @@ python scripts/plan.py --dataset halfcheetah-medium-expert-v2
 
 By default, this will use the hyperparameters in [config/offline.py](config/offline.py). You can override any hyperparameter with a runtime flag:
 ```
-python scripts/plan.py --dataset halfcheetah-medium-expert-v2 --horizon 4 --beam_width 256
+python scripts/plan.py --dataset halfcheetah-medium-expert-v2 \
+	--horizon 4 --beam_width 256
 ```
 
 ### Docker
 
+Copy your MuJoCo key to the Docker build context and build the container:
 ```
 cp ~/.mujoco/mjkey.txt azure/files/
 docker build -f azure/Dockerfile . -t trajectory
 ```
 
-Test the container with:
+Test the container:
 ```
 docker run -it --rm --gpus all \
 	--mount type=bind,source=/home/janner/mount/trajectory-transformer,target=/home/code \
@@ -56,7 +58,7 @@ docker tag trajectory ${DOCKER_USERNAME}/trajectory:latest
 docker image push ${DOCKER_USERNAME}/trajectory
 ```
 
-Update [azure/config.py](azure/config.py), either by modifying the file directly or setting the relevant [environment variables]((azure/config.py#L35-L40).
+Update [azure/config.py](azure/config.py), either by modifying the file directly or setting the relevant [environment variables](azure/config.py#L35-L40).
 
 Finally, launch with:
 ```
