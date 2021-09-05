@@ -1,5 +1,7 @@
 ## Trajectory Transformer
 
+Code release for [Offline Reinforcement Learning as One Big Sequence Modeling Problem](https://arxiv.org/abs/2106.02039).
+
 ### Installation
 
 ```
@@ -63,6 +65,16 @@ Update [azure/config.py](azure/config.py), either by modifying the file directly
 Finally, launch with:
 ```
 python azure/launch_train.py
+```
+
+### Reference
+```
+@article{janner2020sequence,
+  title={Reinforcement Learning as One Big Sequence Modeling Problem},
+  author={Michael Janner and Qiyang Li and Sergey Levine},
+  journal={arXiv preprint arXiv:2106.02039},
+  year={2021},
+}
 ```
 
 ### Acknowledgements

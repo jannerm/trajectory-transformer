@@ -3,7 +3,7 @@ from trajectory.utils import watch
 #------------------------ base ------------------------#
 
 logbase = 'logs/'
-gpt_expname = 'gpt/'
+gpt_expname = 'gpt_local/'
 
 ## automatically make experiment names for planning
 ## by labelling folders with these args
