@@ -2,9 +2,11 @@
 
 ### Installation
 
-1. `conda env create -f environment.yml`
-2. `conda activate trajectory`
-2. `pip install -e .`
+```
+conda env create -f environment.yml
+conda activate trajectory
+pip install -e .
+```
 
 ### Usage
 
