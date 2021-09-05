@@ -1,8 +1,8 @@
-## Trajectory Transformer
+# Trajectory Transformer
 
 Code release for [Reinforcement Learning as One Big Sequence Modeling Problem](https://arxiv.org/abs/2106.02039).
 
-### Installation
+## Installation
 
 ```
 conda env create -f environment.yml
@@ -10,7 +10,7 @@ conda activate trajectory
 pip install -e .
 ```
 
-### Usage
+## Usage
 
 Train a transformer with:
 ```
@@ -28,7 +28,7 @@ python scripts/plan.py --dataset halfcheetah-medium-expert-v2 \
 	--horizon 4 --beam_width 256
 ```
 
-### Docker
+## Docker
 
 Copy your MuJoCo key to the Docker build context and build the container:
 ```
@@ -47,7 +47,7 @@ docker run -it --rm --gpus all \
 	python /home/code/scripts/train.py --dataset hopper-medium-expert-v2 --exp_name docker/"
 ```
 
-### Running on Azure
+## Running on Azure
 
 Launching jobs on Azure requires one more dependency:
 ```
@@ -68,7 +68,7 @@ Finally, launch with:
 python azure/launch_train.py
 ```
 
-### Reference
+## Reference
 ```
 @article{janner2020sequence,
   title={Reinforcement Learning as One Big Sequence Modeling Problem},
@@ -78,6 +78,6 @@ python azure/launch_train.py
 }
 ```
 
-### Acknowledgements
+## Acknowledgements
 
 The GPT implementation is from Andrej Karpathy's [minGPT](https://github.com/karpathy/minGPT) repo.
