@@ -52,9 +52,10 @@ class QuantileDiscretizer:
 		indices_2 = self.discretize(recon)
 		assert (indices == indices_2).all()
 		## reconstruct random indices
-		randint = np.random.randint(0, self.N, indices.shape)
-		randint_2 = self.discretize(self.reconstruct(randint))
-		assert (randint == randint_2).all()
+		## @TODO: remove duplicate thresholds
+		# randint = np.random.randint(0, self.N, indices.shape)
+		# randint_2 = self.discretize(self.reconstruct(randint))
+		# assert (randint == randint_2).all()
 		print('✓')
 
 	def discretize(self, x, subslice=(None, None)):

@@ -24,8 +24,8 @@ def remote_fn(doodad_config, variant):
     )
     save_doodad_config(doodad_config)
 
-environments = ['halfcheetah']
-buffers = ['medium-expert-v2']
+environments = ['hopper']
+buffers = ['medium-expert-v2', 'medium-v2', 'medium-replay-v2', 'random-expert-v2']
 datasets = [f'{env}-{buf}' for env in environments for buf in buffers]
 
 azure_logpath = 'defaults/'
