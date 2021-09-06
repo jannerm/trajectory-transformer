@@ -69,6 +69,11 @@ docker image push ${DOCKER_USERNAME}/trajectory
 
 3. Update [`azure/config.py`](azure/config.py), either by modifying the file directly or setting the relevant [environment variables](azure/config.py#L47-L52). To set the `AZURE_STORAGE_CONNECTION` variable, navigate to the `Access keys` section of your storage account. Click `Show keys` and copy the `Connection string`.
 
+4. Download [`azcopy`](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10) to `bin`:
+```
+./azure/download.sh
+```
+
 #### Usage
 
 Launch training jobs with
