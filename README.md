@@ -60,7 +60,7 @@ docker run -it --rm --gpus all \
 pip install git+https://github.com/JannerM/doodad.git@janner
 ```
 
-2. Tag the image built in [the previous section](#Docker) and push it to dockerhub:
+2. Tag the image built in [the previous section](#Docker) and push it to Docker Hub:
 ```
 export DOCKER_USERNAME=$(docker info | sed '/Username:/!d;s/.* //')
 docker tag trajectory ${DOCKER_USERNAME}/trajectory:latest
