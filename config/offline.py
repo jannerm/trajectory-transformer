@@ -116,3 +116,9 @@ walker2d_medium_expert_v2 = {
         'horizon': 5,
     },
 }
+
+ant_medium_expert_v2 = ant_medium_v2 = ant_medium_replay_v2 = ant_random_v2 = {
+    'train': {
+        'batch_size': 128,
+    }
+}

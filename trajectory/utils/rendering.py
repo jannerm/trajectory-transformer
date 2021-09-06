@@ -9,11 +9,17 @@ import pdb
 
 from .arrays import to_np
 from .video import save_video, save_videos
+from ..datasets import load_environment, get_preprocess_fn
 
 def make_renderer(args):
     render_str = getattr(args, 'renderer')
     render_class = getattr(sys.modules[__name__], render_str)
-    return render_class(args.dataset)
+    ## get dimensions in case the observations are preprocessed
+    env = load_environment(args.dataset)
+    preprocess_fn = get_preprocess_fn(args.dataset)
+    observation = env.reset()
+    observation = preprocess_fn(observation)
+    return render_class(args.dataset, observation_dim=observation.size)
 
 def split(sequence, observation_dim, action_dim):
     assert sequence.shape[1] == observation_dim + action_dim + 2
@@ -28,6 +34,10 @@ def set_state(env, state):
     qvel_dim = env.sim.data.qvel.size
     qstate_dim = qpos_dim + qvel_dim
 
+    if 'ant' in env.name:
+        ypos = np.zeros(1)
+        state = np.concatenate([ypos, state])
+
     if state.size == qpos_dim - 1 or state.size == qstate_dim - 1:
         xpos = np.zeros(1)
         state = np.concatenate([xpos, state])
@@ -35,6 +45,10 @@ def set_state(env, state):
     if state.size == qpos_dim:
         qvel = np.zeros(qvel_dim)
         state = np.concatenate([state, qvel])
+
+    if 'ant' in env.name and state.size > qpos_dim + qvel_dim:
+        xpos = np.zeros(1)
+        state = np.concatenate([xpos, state])[:qstate_dim]
 
     assert state.size == qpos_dim + qvel_dim
 
@@ -70,14 +84,14 @@ class DebugRenderer:
 
 class Renderer:
 
-    def __init__(self, env):
+    def __init__(self, env, observation_dim=None, action_dim=None):
         if type(env) is str:
-            self.env = gym.make(env).unwrapped
+            self.env = load_environment(env)
         else:
             self.env = env
 
-        self.observation_dim = np.prod(self.env.observation_space.shape)
-        self.action_dim = np.prod(self.env.action_space.shape)
+        self.observation_dim = observation_dim or np.prod(self.env.observation_space.shape)
+        self.action_dim = action_dim or np.prod(self.env.action_space.shape)
         self.viewer = mjc.MjRenderContextOffscreen(self.env.sim)
 
     def __call__(self, *args, **kwargs):

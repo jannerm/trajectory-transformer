@@ -6,7 +6,7 @@ import trajectory.utils as utils
 import trajectory.datasets as datasets
 from trajectory.search import (
     beam_plan,
-    preprocess_obs,
+    make_prefix,
     extract_actions,
     update_context,
 )
@@ -45,6 +45,7 @@ observation_dim = dataset.observation_dim
 action_dim = dataset.action_dim
 
 value_fn = lambda x: discretizer.value_fn(x, args.percentile)
+preprocess_fn = datasets.get_preprocess_fn(env.name)
 
 #######################
 ###### main loop ######
@@ -62,9 +63,11 @@ context = []
 T = env.max_episode_steps
 for t in range(T):
 
+    observation = preprocess_fn(observation)
+
     if t % args.plan_freq == 0:
         ## concatenate previous transitions and current observations to input to model
-        prefix = preprocess_obs(discretizer, context, observation, args.prefix_context)
+        prefix = make_prefix(discretizer, context, observation, args.prefix_context)
 
         ## sample sequence from model beginning with `prefix`
         sequence = beam_plan(

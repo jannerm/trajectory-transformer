@@ -7,6 +7,14 @@ def kitchen_preprocess_fn(observations):
     assert (remove.max(0) == remove.min(0)).all(), 'removing important state information'
     return keep
 
+def ant_preprocess_fn(observations):
+    qpos_dim = 13 ## root_x and root_y removed
+    qvel_dim = 14
+    cfrc_dim = 84
+    assert observations.shape[1] == qpos_dim + qvel_dim + cfrc_dim
+    keep = observations[:, :qpos_dim + qvel_dim]
+    return keep
+
 def vmap(fn):
 
     def _fn(inputs):
@@ -38,8 +46,15 @@ preprocess_functions = {
     'kitchen-complete-v0': vmap(kitchen_preprocess_fn),
     'kitchen-mixed-v0': vmap(kitchen_preprocess_fn),
     'kitchen-partial-v0': vmap(kitchen_preprocess_fn),
+    'ant-medium-expert-v2': vmap(ant_preprocess_fn),
+    'ant-medium-replay-v2': vmap(ant_preprocess_fn),
+    'ant-medium-v2': vmap(ant_preprocess_fn),
+    'ant-random-v2': vmap(ant_preprocess_fn),
 }
 
 dataset_preprocess_functions = {
     k: preprocess_dataset(fn) for k, fn in preprocess_functions.items()
 }
+
+def get_preprocess_fn(env):
+    return preprocess_functions.get(env, lambda x: x)

@@ -6,7 +6,7 @@ from ..utils.arrays import to_torch
 
 VALUE_PLACEHOLDER = 1e6
 
-def preprocess_obs(discretizer, context, obs, prefix_context=True):
+def make_prefix(discretizer, context, obs, prefix_context=True):
     observation_dim = obs.size
     obs_discrete = discretizer.discretize(obs, subslice=[0, observation_dim])
     obs_discrete = to_torch(obs_discrete, dtype=torch.long)

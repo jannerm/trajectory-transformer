@@ -28,8 +28,8 @@ class QuantileDiscretizer:
 		self.diffs = self.thresholds[1:] - self.thresholds[:-1]
 
 		## for sparse reward tasks
-		if (self.diffs[:,-1] == 0).any():
-			raise RuntimeError('rebin for sparse reward tasks')
+		# if (self.diffs[:,-1] == 0).any():
+		# 	raise RuntimeError('rebin for sparse reward tasks')
 
 		self._test()
 
