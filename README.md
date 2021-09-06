@@ -55,7 +55,7 @@ docker run -it --rm --gpus all \
 
 #### Setup
 
-1. Launching jobs on Azure requires one more dependency:
+1. Launching jobs on Azure requires one more python dependency:
 ```
 pip install git+https://github.com/JannerM/doodad.git@janner
 ```
