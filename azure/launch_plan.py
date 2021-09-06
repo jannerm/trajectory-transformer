@@ -37,7 +37,7 @@ def remote_fn(doodad_config, variant):
 
 if __name__ == "__main__":
 
-    environments = ['halfcheetah']
+    environments = ['ant']
     buffers = ['medium-expert-v2', 'medium-v2', 'medium-replay-v2', 'random-v2']
     datasets = [f'{env}-{buf}' for env in environments for buf in buffers]
 
@@ -51,8 +51,8 @@ if __name__ == "__main__":
         'logbase': os.path.join('/doodad_tmp', azure_logpath, 'logs'),
         'prefix': 'plans/azure/',
         'verbose': False,
-        'suffix_start': 40,
-        'n_suffices': 3,
+        'suffix_start': 20,
+        'n_suffices': 5,
     }
 
     sweep_function(
@@ -61,6 +61,8 @@ if __name__ == "__main__":
         default_params=default_params,
         config_path=os.path.abspath('azure/config.py'),
         log_path=azure_logpath,
+        azure_region='westus2',
+        # gpu_model='nvidia-tesla-v100',
         gpu_model='nvidia-tesla-t4',
         filter_dir=['logs', 'bin'],
         use_gpu=True,

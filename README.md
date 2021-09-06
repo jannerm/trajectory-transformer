@@ -29,7 +29,7 @@ python scripts/plan.py --dataset halfcheetah-medium-expert-v2
 By default, this will use the hyperparameters in [`config/offline.py`](config/offline.py). You can override any hyperparameter with a runtime flag, _e.g._:
 ```
 python scripts/plan.py --dataset halfcheetah-medium-expert-v2 \
-	--horizon 4 --beam_width 256
+	--horizon 5 --beam_width 32
 ```
 
 ## Docker

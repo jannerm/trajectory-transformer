@@ -3,7 +3,7 @@ from trajectory.utils import watch
 #------------------------ base ------------------------#
 
 logbase = 'logs/'
-gpt_expname = 'gpt_local/'
+gpt_expname = 'gpt/azure'
 
 ## automatically make experiment names for planning
 ## by labelling folders with these args
@@ -87,7 +87,7 @@ base = {
 halfcheetah_medium_expert_v2 = halfcheetah_medium_v2 = halfcheetah_medium_replay_v2 = {
     'plan': {
         'horizon': 5,
-        'beam_width': 32,
+        # 'beam_width': 32,
     }
 }
 
@@ -119,6 +119,10 @@ walker2d_medium_expert_v2 = {
 
 ant_medium_expert_v2 = ant_medium_v2 = ant_medium_replay_v2 = ant_random_v2 = {
     'train': {
+        ## reduce batch size because the dimensionality is larger
         'batch_size': 128,
+    },
+    'plan': {
+        'horizon': 5,
     }
 }
