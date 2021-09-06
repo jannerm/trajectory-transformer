@@ -1,5 +1,14 @@
 import os
 
+def get_docker_username():
+   import subprocess
+   import shlex
+   ps = subprocess.Popen(shlex.split('docker info'), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+   output = subprocess.check_output(shlex.split("sed '/Username:/!d;s/.* //'"), stdin=ps.stdout)
+   username = output.decode('utf-8').replace('\n', '')
+   print(f'[ azure/config ] Grabbed username from `docker info`: {username}')
+   return username
+
 ## /path/to/trajectory-transformer/azure
 CWD = os.path.dirname(__file__)
 ## /path/to/trajectory-transformer
@@ -25,7 +34,7 @@ DEFAULT_AZURE_GPU_MODEL = 'nvidia-tesla-t4'
 DEFAULT_AZURE_INSTANCE_TYPE = 'Standard_DS1_v2'
 DEFAULT_AZURE_REGION = 'eastus'
 
-DOCKER_USERNAME = os.environ['DOCKER_USERNAME']
+DOCKER_USERNAME = os.environ.get('DOCKER_USERNAME', get_docker_username())
 DEFAULT_DOCKER = f'docker.io/{DOCKER_USERNAME}/trajectory:latest'
 
 print(f'[ azure/config ] Local dir: {MODULE_PATH}')
