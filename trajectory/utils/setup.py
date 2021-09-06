@@ -41,6 +41,8 @@ class Parser(Tap):
 
     def parse_args(self, experiment=None):
         args = super().parse_args(known_only=True)
+        ## if not loading from a config script, skip the result of the setup
+        if not hasattr(args, 'config'): return args
         args = self.read_config(args, experiment)
         self.add_extras(args)
         self.set_seed(args)
