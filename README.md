@@ -63,6 +63,8 @@ docker image push ${DOCKER_USERNAME}/trajectory
 
 Update [azure/config.py](azure/config.py), either by modifying the file directly or setting the relevant [environment variables](azure/config.py#L35-L40).
 
+To set the `AZURE_STORAGE_CONNECTION` variable, navigate to the `Access keys` section of your storage account. Click `Show keys` and copy the `Connection string`.
+
 Finally, launch with:
 ```
 python azure/launch_train.py
