@@ -14,3 +14,4 @@ slurm-*.out
 *.pdf
 *.pkl
 mjkey.txt
+azure/fuse.cfg

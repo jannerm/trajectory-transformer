@@ -49,6 +49,8 @@ docker run -it --rm --gpus all \
 
 ## Running on Azure
 
+#### Setup
+
 Launching jobs on Azure requires one more dependency:
 ```
 pip install git+https://github.com/JannerM/doodad.git@janner
@@ -65,9 +67,30 @@ Update [azure/config.py](azure/config.py), either by modifying the file directly
 
 To set the `AZURE_STORAGE_CONNECTION` variable, navigate to the `Access keys` section of your storage account. Click `Show keys` and copy the `Connection string`.
 
+#### Usage
 Finally, launch with:
 ```
 python azure/launch_train.py
+```
+
+#### Viewing results
+
+To rsync the results from the Azure storage container, run
+```
+./azure/sync.sh
+```
+
+To mount the storage container, first create a blobfuse config with
+```
+./azure/make_fuse_config.sh
+```
+and then mount with
+```
+./azure/mount.sh
+```
+This will mount the storage container to a new folder called `mount/`. To unmount and remove the folder, run
+```
+./azure/umount.sh
 ```
 
 ## Reference
