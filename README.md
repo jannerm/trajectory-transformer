@@ -85,9 +85,23 @@ These scripts do not take runtime arguments. Instead, they run corresponding scr
 
 #### Viewing results
 
-To rsync the results from the Azure storage container, run `./azure/sync.sh`.
+To rsync the results from the Azure storage container, run
+```
+./azure/sync.sh
+```
 
-To mount the storage container, first create a blobfuse config with `./azure/make_fuse_config.sh` and then mount with `./azure/mount.sh`. This will mount the storage container to a new folder called `mount/`. To unmount and remove the folder, run `./azure/umount.sh`.
+To mount the storage container, first create a blobfuse config with
+```
+./azure/make_fuse_config.sh
+```
+and then mount with
+```
+./azure/mount.sh
+```
+This will mount the storage container to a new folder called `mount/`. To unmount and remove the folder, run
+```
+./azure/umount.sh
+```
 
 ## Reference
 ```
