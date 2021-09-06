@@ -4,7 +4,7 @@ Code release for [Reinforcement Learning as One Big Sequence Modeling Problem](h
 
 ## Installation
 
-All python dependencies are in [`environment.yml`](environment.yml).
+All python dependencies are in [`environment.yml`](environment.yml). Install with:
 
 ```
 conda env create -f environment.yml
@@ -12,7 +12,7 @@ conda activate trajectory
 pip install -e .
 ```
 
-For reproducibility, we have also included system requirements in a [`Dockerfile`](azure/Dockerfile) (see [##Docker](##Docker)), but the conda installation should work on most standard Linux machines.
+For reproducibility, we have also included system requirements in a [`Dockerfile`](azure/Dockerfile) (see [installation instructions](#Docker)), but the conda installation should work on most standard Linux machines.
 
 ## Usage
 
