@@ -16,10 +16,14 @@ For reproducibility, we have also included system requirements in a [`Dockerfile
 
 ## Usage
 
+#### Training
+
 Train a transformer with:
 ```
 python scripts/train.py --dataset halfcheetah-medium-expert-v2
 ```
+
+#### Planning
 
 To reproduce the offline RL results:
 ```
