@@ -128,7 +128,7 @@ This will mount the storage container to a new folder called `mount/`. To unmoun
 
 ## Reference
 ```
-@article{janner2020sequence,
+@article{janner2021sequence,
   title={Reinforcement Learning as One Big Sequence Modeling Problem},
   author={Michael Janner and Qiyang Li and Sergey Levine},
   journal={arXiv preprint arXiv:2106.02039},
