@@ -51,27 +51,39 @@ docker run -it --rm --gpus all \
 
 #### Setup
 
-Launching jobs on Azure requires one more dependency:
+1. Launching jobs on Azure requires one more dependency:
 ```
 pip install git+https://github.com/JannerM/doodad.git@janner
 ```
 
-Tag the image and push it to dockerhub:
+2. Build the docker image:
+```
+docker build -f azure/Dockerfile . -t trajectory
+```
+
+3. Tag the image and push it to dockerhub:
 ```
 export DOCKER_USERNAME=$(docker info | sed '/Username:/!d;s/.* //')
 docker tag trajectory ${DOCKER_USERNAME}/trajectory:latest
 docker image push ${DOCKER_USERNAME}/trajectory
 ```
 
-Update [azure/config.py](azure/config.py), either by modifying the file directly or setting the relevant [environment variables](azure/config.py#L35-L40).
+4. Update [azure/config.py](azure/config.py), either by modifying the file directly or setting the relevant [environment variables](azure/config.py#L47-L52).
 
 To set the `AZURE_STORAGE_CONNECTION` variable, navigate to the `Access keys` section of your storage account. Click `Show keys` and copy the `Connection string`.
 
 #### Usage
-Finally, launch with:
+
+Launch training jobs with
 ```
 python azure/launch_train.py
 ```
+and planning jobs with
+```
+python azure/launch_plan.py
+```
+
+These scripts do not take runtime arguments. Instead, they run corresponding scripts (`scripts/train.py` and `scripts/plan.py`, respectively) using the Cartesian product of the parameters in [`params_to_sweep`](azure/train.py#L46-48).
 
 #### Viewing results
 
