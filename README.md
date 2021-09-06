@@ -33,10 +33,20 @@ python scripts/plan.py --dataset halfcheetah-medium-expert-v2 \
 ```
 ## Pretrained models
 
-We have provided pretrained models for 16 datasets:`{halfcheetah, hopper, walker2d, ant}-{expert-v2, medium-expert-v2, medium-v2, medium-replay-v2}`. Download them with:
-`./pretrained.sh`
+We have provided pretrained models for 16 datasets:
+```
+	{halfcheetah, hopper, walker2d, ant}
+		x
+	{expert-v2, medium-expert-v2, medium-v2, medium-replay-v2}`
+```
 
-The models will be saved in `logs/$dataset/gpt/pretrained`. To plan with these models, refer to them using the `--gpt_loadpath` flag:
+Download them with:
+
+```
+./pretrained.sh
+```
+
+The models will be saved in `logs/$DATASET/gpt/pretrained`. To plan with these models, refer to them using the `--gpt_loadpath` flag:
 ```
 python scripts/plan.py --dataset halfcheetah-medium-v2 --gpt_loadpath gpt/pretrained
 
