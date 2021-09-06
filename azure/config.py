@@ -33,6 +33,9 @@ LOCAL_LOG_DIR = '/tmp'
 DEFAULT_AZURE_GPU_MODEL = 'nvidia-tesla-t4'
 DEFAULT_AZURE_INSTANCE_TYPE = 'Standard_DS1_v2'
 DEFAULT_AZURE_REGION = 'eastus'
+DEFAULT_AZURE_RESOURCE_GROUP = 'traj'
+DEFAULT_AZURE_VM_NAME = 'traj-vm'
+DEFAULT_AZURE_VM_PASSWORD = 'Azure1'
 
 DOCKER_USERNAME = os.environ.get('DOCKER_USERNAME', get_docker_username())
 DEFAULT_DOCKER = f'docker.io/{DOCKER_USERNAME}/trajectory:latest'
