@@ -35,9 +35,9 @@ python scripts/plan.py --dataset halfcheetah-medium-expert-v2 \
 
 We have provided pretrained models for 16 datasets:
 ```
-	{halfcheetah, hopper, walker2d, ant}
-		x
-	{expert-v2, medium-expert-v2, medium-v2, medium-replay-v2}`
+{halfcheetah, hopper, walker2d, ant}
+	x
+{expert-v2, medium-expert-v2, medium-v2, medium-replay-v2}`
 ```
 
 Download them with:
