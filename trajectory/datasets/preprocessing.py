@@ -46,6 +46,7 @@ preprocess_functions = {
     'kitchen-complete-v0': vmap(kitchen_preprocess_fn),
     'kitchen-mixed-v0': vmap(kitchen_preprocess_fn),
     'kitchen-partial-v0': vmap(kitchen_preprocess_fn),
+    'ant-expert-v2': vmap(ant_preprocess_fn),
     'ant-medium-expert-v2': vmap(ant_preprocess_fn),
     'ant-medium-replay-v2': vmap(ant_preprocess_fn),
     'ant-medium-v2': vmap(ant_preprocess_fn),

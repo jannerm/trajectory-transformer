@@ -84,7 +84,7 @@ base = {
 ## for all halfcheetah environments, you can reduce the planning horizon and beam width without
 ## affecting performance. good for speed and sanity.
 
-halfcheetah_medium_expert_v2 = halfcheetah_medium_v2 = halfcheetah_medium_replay_v2 = {
+halfcheetah_expert_v2 = halfcheetah_medium_expert_v2 = halfcheetah_medium_v2 = halfcheetah_medium_replay_v2 = {
     'plan': {
         'horizon': 5,
         # 'beam_width': 32,
@@ -92,7 +92,7 @@ halfcheetah_medium_expert_v2 = halfcheetah_medium_v2 = halfcheetah_medium_replay
 }
 
 ## if you leave the dictionary empty, it will use the base parameters
-hopper_medium_expert_v2 = walker2d_medium_v2 = {}
+hopper_expert_v2 = hopper_medium_expert_v2 = walker2d_expert_v2 = walker2d_medium_v2 = {}
 
 ## hopper and wlaker2d are a little more sensitive to planning hyperparameters; 
 ## proceed with caution when reducing the horizon or increasing the planning frequency
@@ -117,7 +117,7 @@ walker2d_medium_expert_v2 = {
     },
 }
 
-ant_medium_expert_v2 = ant_medium_v2 = ant_medium_replay_v2 = ant_random_v2 = {
+ant_expert_v2 = ant_medium_expert_v2 = ant_medium_v2 = ant_medium_replay_v2 = ant_random_v2 = {
     'train': {
         ## reduce batch size because the dimensionality is larger
         'batch_size': 128,
