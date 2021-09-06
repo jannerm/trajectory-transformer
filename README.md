@@ -4,11 +4,15 @@ Code release for [Reinforcement Learning as One Big Sequence Modeling Problem](h
 
 ## Installation
 
+All python dependencies are in [`environment.yml`](environment.yml).
+
 ```
 conda env create -f environment.yml
 conda activate trajectory
 pip install -e .
 ```
+
+For reproducibility, we have also included system requirements in a [`Dockerfile`](azure/Dockerfile) (see [##Docker](##Docker)), but the conda installation should work on most standard Linux machines.
 
 ## Usage
 
@@ -22,7 +26,7 @@ To reproduce the offline RL results:
 python scripts/plan.py --dataset halfcheetah-medium-expert-v2
 ```
 
-By default, this will use the hyperparameters in [config/offline.py](config/offline.py). You can override any hyperparameter with a runtime flag, _e.g._:
+By default, this will use the hyperparameters in [`config/offline.py`](config/offline.py). You can override any hyperparameter with a runtime flag, _e.g._:
 ```
 python scripts/plan.py --dataset halfcheetah-medium-expert-v2 \
 	--horizon 4 --beam_width 256
@@ -56,19 +60,14 @@ docker run -it --rm --gpus all \
 pip install git+https://github.com/JannerM/doodad.git@janner
 ```
 
-2. Build the docker image:
-```
-docker build -f azure/Dockerfile . -t trajectory
-```
-
-3. Tag the image and push it to dockerhub:
+2. Tag the image built in [the previous section](##Docker) and push it to dockerhub:
 ```
 export DOCKER_USERNAME=$(docker info | sed '/Username:/!d;s/.* //')
 docker tag trajectory ${DOCKER_USERNAME}/trajectory:latest
 docker image push ${DOCKER_USERNAME}/trajectory
 ```
 
-4. Update [azure/config.py](azure/config.py), either by modifying the file directly or setting the relevant [environment variables](azure/config.py#L47-L52). To set the `AZURE_STORAGE_CONNECTION` variable, navigate to the `Access keys` section of your storage account. Click `Show keys` and copy the `Connection string`.
+3. Update [`azure/config.py`](azure/config.py), either by modifying the file directly or setting the relevant [environment variables](azure/config.py#L47-L52). To set the `AZURE_STORAGE_CONNECTION` variable, navigate to the `Access keys` section of your storage account. Click `Show keys` and copy the `Connection string`.
 
 #### Usage
 
