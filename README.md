@@ -18,24 +18,26 @@ For reproducibility, we have also included system requirements in a [`Dockerfile
 
 Train a transformer with:
 ```
-python scripts/train.py --dataset halfcheetah-medium-expert-v2
+python scripts/train.py --dataset halfcheetah-medium-v2
 ```
 
 To reproduce the offline RL results:
 ```
-python scripts/plan.py --dataset halfcheetah-medium-expert-v2
+python scripts/plan.py --dataset halfcheetah-medium-v2
 ```
 
 By default, this will use the hyperparameters in [`config/offline.py`](config/offline.py). You can override any hyperparameter with a runtime flag, _e.g._:
 ```
-python scripts/plan.py --dataset halfcheetah-medium-expert-v2 \
+python scripts/plan.py --dataset halfcheetah-medium-v2 \
 	--horizon 5 --beam_width 32
 ```
 ## Pretrained models
 
 We have provided pretrained models for 16 datasets:
 ```
-{halfcheetah, hopper, walker2d, ant} x {expert-v2, medium-expert-v2, medium-v2, medium-replay-v2}`
+{halfcheetah, hopper, walker2d, ant}
+	x
+{expert-v2, medium-expert-v2, medium-v2, medium-replay-v2}
 ```
 
 Download them with:
@@ -44,10 +46,9 @@ Download them with:
 ./pretrained.sh
 ```
 
-The models will be saved in `logs/$DATASET/gpt/pretrained`. To plan with these models, refer to them using the `--gpt_loadpath` flag:
+The models will be saved in `logs/$DATASET/gpt/pretrained`. To plan with these models, refer to them using the `gpt_loadpath` flag:
 ```
 python scripts/plan.py --dataset halfcheetah-medium-v2 --gpt_loadpath gpt/pretrained
-
 ```
 
 ## Docker
