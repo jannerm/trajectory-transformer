@@ -68,9 +68,7 @@ docker tag trajectory ${DOCKER_USERNAME}/trajectory:latest
 docker image push ${DOCKER_USERNAME}/trajectory
 ```
 
-4. Update [azure/config.py](azure/config.py), either by modifying the file directly or setting the relevant [environment variables](azure/config.py#L47-L52).
-
-To set the `AZURE_STORAGE_CONNECTION` variable, navigate to the `Access keys` section of your storage account. Click `Show keys` and copy the `Connection string`.
+4. Update [azure/config.py](azure/config.py), either by modifying the file directly or setting the relevant [environment variables](azure/config.py#L47-L52). To set the `AZURE_STORAGE_CONNECTION` variable, navigate to the `Access keys` section of your storage account. Click `Show keys` and copy the `Connection string`.
 
 #### Usage
 
@@ -83,27 +81,13 @@ and planning jobs with
 python azure/launch_plan.py
 ```
 
-These scripts do not take runtime arguments. Instead, they run corresponding scripts (`scripts/train.py` and `scripts/plan.py`, respectively) using the Cartesian product of the parameters in [`params_to_sweep`](azure/train.py#L46-48).
+These scripts do not take runtime arguments. Instead, they run corresponding scripts (`scripts/train.py` and `scripts/plan.py`, respectively) using the Cartesian product of the parameters in [`params_to_sweep`](azure/launch_train.py#L36-48).
 
 #### Viewing results
 
-To rsync the results from the Azure storage container, run
-```
-./azure/sync.sh
-```
+To rsync the results from the Azure storage container, run `./azure/sync.sh`.
 
-To mount the storage container, first create a blobfuse config with
-```
-./azure/make_fuse_config.sh
-```
-and then mount with
-```
-./azure/mount.sh
-```
-This will mount the storage container to a new folder called `mount/`. To unmount and remove the folder, run
-```
-./azure/umount.sh
-```
+To mount the storage container, first create a blobfuse config with `./azure/make_fuse_config.sh` and then mount with `./azure/mount.sh`. This will mount the storage container to a new folder called `mount/`. To unmount and remove the folder, run `./azure/umount.sh`.
 
 ## Reference
 ```
