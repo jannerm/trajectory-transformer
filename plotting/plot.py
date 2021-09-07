@@ -11,6 +11,13 @@ class Colors:
 	red = '#EC7C7D'
 	blue = '#70ABCC'
 
+LABELS = {
+	# 'BC': 'Behavior\nCloning',
+	# 'MBOP': 'Model-Based\nOffline Planning',
+	# 'BRAC': 'Behavior-Reg.\nActor-Critic',
+	# 'CQL': 'Conservative\nQ-Learning',
+}
+
 def get_mean(results, exclude=None):
 	'''
 		results : { environment: score, ... }
@@ -46,9 +53,16 @@ if __name__ == '__main__':
 		Colors.red, Colors.red, Colors.blue, Colors.blue
 	]
 
-	plt.bar(algs, vals, color=colors, edgecolor=Colors.gold, lw=0)
+	labels = [LABELS.get(alg, alg) for alg in algs]
+	plt.bar(labels, vals, color=colors, edgecolor=Colors.gold, lw=0)
 	plt.ylabel('Average normalized return', labelpad=15)
 	plt.title('Offline RL Results')
+
+	legend_labels = ['Behavior Cloning', 'Trajectory Optimization', 'Temporal Difference', 'Sequence Modeling']
+	colors = [Colors.grey, Colors.gold, Colors.red, Colors.blue]
+	handles = [plt.Rectangle((0,0),1,1, color=color) for label, color in zip(legend_labels, colors)]
+	plt.legend(handles, legend_labels, ncol=4,
+		bbox_to_anchor=(1.07, -.18), fancybox=False, framealpha=0, shadow=False, columnspacing=1.5, handlelength=1.5)
 
 	matplotlib.rcParams['hatch.linewidth'] = 7.5
 	ax.patches[-1].set_hatch('/')
