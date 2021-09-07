@@ -60,7 +60,10 @@ To create the table of offline RL results from the paper, run:
 ```
 python plotting/table.py
 ```
-This will output a table that can be copied into a Latex document:
+
+<details>
+<summary>This will output a table that can be copied into a Latex document. Expand to view.</summary>
+
 ```
 \begin{table*}[h]
 \centering
@@ -91,6 +94,8 @@ Medium-Replay & Ant & $-$ & $-$ & $-$ & $-$ & $-$ & $77.0$ \scriptsize{\raisebox
 \label{table:d4rl}
 \end{table*}
 ```
+
+</details>
 
 To create the averaged results plots, run:
 ```
