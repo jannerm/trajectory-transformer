@@ -104,7 +104,7 @@ python plotting/plot.py
 ```
 
 <details>
-<summary>The plot will be saved to [`plotting/bar.pdf`](plotting/bar.pdf) (Expand to view.)</summary>
+<summary>The plot will be saved to `plotting/bar.pdf`. (Expand to view.)</summary>
 
 ![](plotting/bar.png)
 </details>
