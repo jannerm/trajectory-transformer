@@ -16,53 +16,31 @@ For reproducibility, we have also included system requirements in a [`Dockerfile
 
 ## Usage
 
-Train a transformer with:
-```
-python scripts/train.py --dataset halfcheetah-medium-v2
-```
+Train a transformer with: `python scripts/train.py --dataset halfcheetah-medium-v2`
 
-To reproduce the offline RL results:
-```
-python scripts/plan.py --dataset halfcheetah-medium-v2
-```
+To reproduce the offline RL results: `python scripts/plan.py --dataset halfcheetah-medium-v2`
 
-By default, this will use the hyperparameters in [`config/offline.py`](config/offline.py). You can override any hyperparameter with a runtime flag, _e.g._:
+By default, these commands will use the hyperparameters in [`config/offline.py`](config/offline.py). You can override them with runtime flags:
 ```
 python scripts/plan.py --dataset halfcheetah-medium-v2 \
 	--horizon 5 --beam_width 32
 ```
+
 ## Pretrained models
 
-We have provided pretrained models for 16 datasets:
-```
-{halfcheetah, hopper, walker2d, ant}
-	x
-{expert-v2, medium-expert-v2, medium-v2, medium-replay-v2}
-```
-
-Download them with:
-
-```
-./pretrained.sh
-```
+We have provided [pretrained models](https://www.dropbox.com/home/pretrained-models) for 16 datasets: `{halfcheetah, hopper, walker2d, ant}-{expert-v2, medium-expert-v2, medium-v2, medium-replay-v2}`. Download them with `./pretrained.sh`
 
 The models will be saved in `logs/$DATASET/gpt/pretrained`. To plan with these models, refer to them using the `gpt_loadpath` flag:
 ```
-python scripts/plan.py --dataset halfcheetah-medium-v2 --gpt_loadpath gpt/pretrained
+python scripts/plan.py --dataset halfcheetah-medium-v2 \
+	--gpt_loadpath gpt/pretrained
 ```
 
-This script will also download 15 plans from each model, saved to `logs/$DATASET/plans/pretrained`. To read these results, run:
-```
-python plotting/read_results.py
-```
-
-To create the table of offline RL results from the paper, run:
-```
-python plotting/table.py
-```
+`pretrained.sh` will also download 15 plans from each model, saved to `logs/$DATASET/plans/pretrained`. Read them with `
+python plotting/read_results.py`.
 
 <details>
-<summary>This will output a table that can be copied into a Latex document. (Expand to view.)</summary>
+<summary>To create the table of offline RL results from the paper, run <code>python plotting/table.py</code>. This will print a table that can be copied into a Latex document. (Expand to view table source.)</summary>
 
 ```
 \begin{table*}[h]
@@ -98,13 +76,12 @@ Medium-Replay & Ant & $-$ & $-$ & $-$ & $-$ & $-$ & $77.0$ \scriptsize{\raisebox
 ![](https://github.com/anonymized-transformer/anonymized-transformer.github.io/blob/master/plots/table.png)
 </details>
 
-To create the averaged results plots, run:
-```
-python plotting/plot.py
-```
-
 <details>
-<summary>The plot will be saved to <a href="plotting/bar.png"><code>plotting/bar.png</code></a>. (Expand to view.)</summary>
+<summary>
+To create the average performance plot, run <code>python plotting/plot.py</code>.
+<!-- The plot will be saved to <a href="plotting/bar.png"><code>plotting/bar.png</code></a>. -->
+(Expand to view plot.)</summary>
+<br>
 
 ![](plotting/bar.png)
 </details>
@@ -153,36 +130,19 @@ docker image push ${DOCKER_USERNAME}/trajectory
 
 #### Usage
 
-Launch training jobs with
-```
-python azure/launch_train.py
-```
-and planning jobs with
-```
-python azure/launch_plan.py
-```
+Launch training jobs with `python azure/launch_train.py` and planning jobs with `python azure/launch_plan.py`.
 
 These scripts do not take runtime arguments. Instead, they run the corresponding scripts ([`scripts/train.py`](scripts/train.py) and [`scripts/plan.py`](scripts/plan.py), respectively) using the Cartesian product of the parameters in [`params_to_sweep`](azure/launch_train.py#L36-L38).
 
 #### Viewing results
 
-To rsync the results from the Azure storage container, run
-```
-./azure/sync.sh
-```
+To rsync the results from the Azure storage container, run `./azure/sync.sh`.
 
-To mount the storage container, first create a blobfuse config with
-```
-./azure/make_fuse_config.sh
-```
-and then mount with
-```
-./azure/mount.sh
-```
-This will mount the storage container to a new folder called `mount/`. To unmount and remove the folder, run
-```
-./azure/umount.sh
-```
+To mount the storage container:
+1. Create a blobfuse config with `./azure/make_fuse_config.sh`
+2. Run `./azure/mount.sh` to mount the storage container to `~/azure_mount`
+
+To unmount the container, run `sudo umount -f mount; rm -r ~/azure_mount`
 
 ## Reference
 ```
