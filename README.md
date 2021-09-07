@@ -62,7 +62,7 @@ python plotting/table.py
 ```
 
 <details>
-<summary>This will output a table that can be copied into a Latex document. Expand to view.</summary>
+<summary>This will output a table that can be copied into a Latex document. (Expand to view.)</summary>
 
 ```
 \begin{table*}[h]
@@ -95,14 +95,19 @@ Medium-Replay & Ant & $-$ & $-$ & $-$ & $-$ & $-$ & $77.0$ \scriptsize{\raisebox
 \end{table*}
 ```
 
-![](plotting/bar.png)
+![](https://github.com/anonymized-transformer/anonymized-transformer.github.io/blob/master/plots/table.png)
 </details>
 
 To create the averaged results plots, run:
 ```
 python plotting/plot.py
 ```
-The plot will be saved to [`plotting/bar.pdf`](plotting/bar.pdf)
+
+<details>
+<summary>The plot will be saved to [`plotting/bar.pdf`](plotting/bar.pdf) (Expand to view.)</summary>
+
+![](plotting/bar.png)
+</details>
 
 ## Docker
 

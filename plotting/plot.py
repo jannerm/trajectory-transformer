@@ -56,4 +56,5 @@ if __name__ == '__main__':
 	ax.spines['right'].set_visible(False)
 	ax.spines['top'].set_visible(False)
 
-	plt.savefig('plotting/bar.pdf', bbox_inches='tight')
+	# plt.savefig('plotting/bar.pdf', bbox_inches='tight')
+	plt.savefig('plotting/bar.png', bbox_inches='tight', dpi=500)
