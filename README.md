@@ -95,7 +95,7 @@ Medium-Replay & Ant & $-$ & $-$ & $-$ & $-$ & $-$ & $77.0$ \scriptsize{\raisebox
 \end{table*}
 ```
 
-![](plotting/bar.png =80%)
+![](plotting/bar.png)
 </details>
 
 To create the averaged results plots, run:
