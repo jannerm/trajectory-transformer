@@ -45,15 +45,19 @@ if __name__ == "__main__":
 
     params_to_sweep = {
         'dataset': datasets,
+        'horizon': [15],
     }
 
     default_params = {
         'logbase': os.path.join('/doodad_tmp', azure_logpath, 'logs'),
         'prefix': 'plans/azure/',
         'verbose': False,
-        'suffix_start': 20,
-        'n_suffices': 5,
+        'suffix_start': 0,
+        'n_suffices': 3,
     }
+
+    print(params_to_sweep)
+    print(default_params)
 
     sweep_function(
         remote_fn,
@@ -64,6 +68,6 @@ if __name__ == "__main__":
         azure_region='westus2',
         # gpu_model='nvidia-tesla-v100',
         gpu_model='nvidia-tesla-t4',
-        filter_dir=['logs', 'bin'],
+        filter_dir=['logs', 'bin', 'mount'],
         use_gpu=True,
     )
