@@ -36,7 +36,7 @@ python scripts/plan.py --dataset halfcheetah-medium-v2 \
 	--gpt_loadpath gpt/pretrained
 ```
 
-`pretrained.sh` will also download 15 plans from each model, saved to `logs/$DATASET/plans/pretrained`. Read them with `
+`pretrained.sh` will also download 15 [plans](https://www.dropbox.com/home/pretrained-plans) from each model, saved to `logs/$DATASET/plans/pretrained`. Read them with `
 python plotting/read_results.py`.
 
 <details>
