@@ -28,7 +28,7 @@ python scripts/plan.py --dataset halfcheetah-medium-v2 \
 
 ## Pretrained models
 
-We have provided [pretrained models](https://www.dropbox.com/home/pretrained-models) for 16 datasets: `{halfcheetah, hopper, walker2d, ant}-{expert-v2, medium-expert-v2, medium-v2, medium-replay-v2}`. Download them with `./pretrained.sh`
+We have provided [pretrained models](https://www.dropbox.com/sh/r09lkdoj66kx43w/AACbXjMhcI6YNsn1qU4LParja?dl=0) for 16 datasets: `{halfcheetah, hopper, walker2d, ant}-{expert-v2, medium-expert-v2, medium-v2, medium-replay-v2}`. Download them with `./pretrained.sh`
 
 The models will be saved in `logs/$DATASET/gpt/pretrained`. To plan with these models, refer to them using the `gpt_loadpath` flag:
 ```
@@ -36,7 +36,7 @@ python scripts/plan.py --dataset halfcheetah-medium-v2 \
 	--gpt_loadpath gpt/pretrained
 ```
 
-`pretrained.sh` will also download 15 [plans](https://www.dropbox.com/home/pretrained-plans) from each model, saved to `logs/$DATASET/plans/pretrained`. Read them with `
+`pretrained.sh` will also download 15 [plans](https://www.dropbox.com/sh/po0nul2u6qk8r2i/AABPDrOEJplQ8JT13DASdOWWa?dl=0) from each model, saved to `logs/$DATASET/plans/pretrained`. Read them with `
 python plotting/read_results.py`.
 
 <details>
@@ -123,10 +123,7 @@ docker image push ${DOCKER_USERNAME}/trajectory
 
 3. Update [`azure/config.py`](azure/config.py), either by modifying the file directly or setting the relevant [environment variables](azure/config.py#L47-L52). To set the `AZURE_STORAGE_CONNECTION` variable, navigate to the `Access keys` section of your storage account. Click `Show keys` and copy the `Connection string`.
 
-4. Download [`azcopy`](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10) to `bin`:
-```
-./azure/download.sh
-```
+4. Download [`azcopy`](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10): `./azure/download.sh`
 
 #### Usage
 
