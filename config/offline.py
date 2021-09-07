@@ -72,7 +72,7 @@ base = {
 
         'vis_freq': 50,
         'exp_name': watch(args_to_watch),
-        'prefix': 'plans/',
+        'prefix': 'plans/defaults/',
         'suffix': '0',
         'verbose': True,
     },
@@ -84,40 +84,55 @@ base = {
 ## for all halfcheetah environments, you can reduce the planning horizon and beam width without
 ## affecting performance. good for speed and sanity.
 
-halfcheetah_expert_v2 = halfcheetah_medium_expert_v2 = halfcheetah_medium_v2 = halfcheetah_medium_replay_v2 = {
+halfcheetah_medium_v2 = halfcheetah_medium_replay_v2 = {
     'plan': {
         'horizon': 5,
-        # 'beam_width': 32,
+        'beam_width': 32,
     }
 }
 
+halfcheetah_medium_expert_v2 = {
+    'plan': {
+        'beam_width': 32,
+    },
+}
+
 ## if you leave the dictionary empty, it will use the base parameters
-hopper_expert_v2 = hopper_medium_expert_v2 = walker2d_expert_v2 = walker2d_medium_v2 = {}
+hopper_medium_expert_v2 = hopper_medium_v2 = walker2d_medium_v2 = {}
 
 ## hopper and wlaker2d are a little more sensitive to planning hyperparameters; 
 ## proceed with caution when reducing the horizon or increasing the planning frequency
 
-hopper_medium_v2 = {
-    'plan': {
-        'plan_freq': 5,
-    }
-}
-
-hopper_medium_replay_v2 = walker2d_medium_replay_v2 = {
+hopper_medium_replay_v2 = {
     'train': {
         ## train on the medium-replay datasets longer
         'n_epochs_ref': 80,
     },
 }
 
-## also safe to reduce the horizon here
 walker2d_medium_expert_v2 = {
     'plan': {
+        ## also safe to reduce the horizon here
         'horizon': 5,
     },
 }
 
-ant_expert_v2 = ant_medium_expert_v2 = ant_medium_v2 = ant_medium_replay_v2 = ant_random_v2 = {
+walker2d_medium_replay_v2 = {
+    'train': {
+        ## train on the medium-replay datasets longer
+        'n_epochs_ref': 80,
+    },
+    'plan': {
+        ## can reduce beam width, but need to adjust action sampling
+        ## distribution and increase horizon to accomodate
+        'horizon': 20,
+        'beam_width': 32,
+        'k_act': 40,
+        'cdf_act': None,
+    }
+}
+
+ant_medium_v2 = ant_medium_replay_v2 = ant_random_v2 = {
     'train': {
         ## reduce batch size because the dimensionality is larger
         'batch_size': 128,
