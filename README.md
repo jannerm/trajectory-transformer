@@ -95,8 +95,7 @@ Medium-Replay & Ant & $-$ & $-$ & $-$ & $-$ & $-$ & $77.0$ \scriptsize{\raisebox
 \end{table*}
 ```
 
-![](https://github.com/JannerM/trajectory-transformer/blob/master/plotting/bar.png | width=80%)
-![GitHub Logo](plotting/bar.png)
+![](plotting/bar.png =80%)
 </details>
 
 To create the averaged results plots, run:
