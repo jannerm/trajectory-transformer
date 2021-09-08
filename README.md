@@ -26,6 +26,8 @@ python scripts/plan.py --dataset halfcheetah-medium-v2 \
 	--horizon 5 --beam_width 32
 ```
 
+(A few hyperparameters are different from those listed in the paper because of changes to the discretization strategy. These hyperparameters will be updated in the next arxiv version to match what is currently in the codebase.)
+
 ## Pretrained models
 
 We have provided [pretrained models](https://www.dropbox.com/sh/r09lkdoj66kx43w/AACbXjMhcI6YNsn1qU4LParja?dl=0) for 16 datasets: `{halfcheetah, hopper, walker2d, ant}-{expert-v2, medium-expert-v2, medium-v2, medium-replay-v2}`. Download them with `./pretrained.sh`
