@@ -26,7 +26,7 @@ python scripts/plan.py --dataset halfcheetah-medium-v2 \
 	--horizon 5 --beam_width 32
 ```
 
-(A few hyperparameters are different from those listed in the paper because of changes to the discretization strategy. These hyperparameters will be updated in the next arxiv version to match what is currently in the codebase.)
+A few hyperparameters are different from those listed in the paper because of changes to the discretization strategy. These hyperparameters will be updated in the next arxiv version to match what is currently in the codebase.
 
 ## Pretrained models
 
