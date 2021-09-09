@@ -141,7 +141,7 @@ To mount the storage container:
 1. Create a blobfuse config with `./azure/make_fuse_config.sh`
 2. Run `./azure/mount.sh` to mount the storage container to `~/azure_mount`
 
-To unmount the container, run `sudo umount -f mount; rm -r ~/azure_mount`
+To unmount the container, run `sudo umount -f ~/azure_mount; rm -r ~/azure_mount`
 
 ## Reference
 ```
