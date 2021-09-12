@@ -29,7 +29,6 @@ def load_results(paths):
 		scores.append(score)
 
 		suffix = path.split('/')[-1]
-		# print(suffix, path, score)
 
 	mean = np.mean(scores)
 	err = np.std(scores) / np.sqrt(len(scores))
@@ -41,8 +40,8 @@ def load_result(path):
 	'''
 	fullpath = os.path.join(path, 'rollout.json')
 	suffix = path.split('/')[-1]
-	## '_' is used as a debugging suffix
-	if not os.path.exists(fullpath) or '_' in suffix:
+
+	if not os.path.exists(fullpath):
 		return None
 
 	results = json.load(open(fullpath, 'rb'))
