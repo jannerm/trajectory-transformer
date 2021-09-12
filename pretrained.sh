@@ -1,4 +1,4 @@
-export DOWNLOAD_PATH=test
+export DOWNLOAD_PATH=logs
 
 [ ! -d ${DOWNLOAD_PATH} ] && mkdir ${DOWNLOAD_PATH}
 
