@@ -32,17 +32,17 @@ means = {
 	},
 	'CQL': {
 		##
-		'halfcheetah-medium-expert-v2': 62.4,
-		'hopper-medium-expert-v2': 111.0,
-		'walker2d-medium-expert-v2': 98.7,
+		'halfcheetah-medium-expert-v2': 91.6,
+		'hopper-medium-expert-v2': 105.4,
+		'walker2d-medium-expert-v2': 108.8,
 		##
-		'halfcheetah-medium-v2': 44.4,
-		'hopper-medium-v2': 58.0,
-		'walker2d-medium-v2': 79.2,
+		'halfcheetah-medium-v2': 44.0,
+		'hopper-medium-v2': 58.5,
+		'walker2d-medium-v2': 72.5,
 		##
-		'halfcheetah-medium-replay-v2': 46.2,
-		'hopper-medium-replay-v2': 48.6,
-		'walker2d-medium-replay-v2': 26.7,	
+		'halfcheetah-medium-replay-v2': 45.5,
+		'hopper-medium-replay-v2': 95.0,
+		'walker2d-medium-replay-v2': 77.2,
 	},
 	'MOPO': {
 		##
