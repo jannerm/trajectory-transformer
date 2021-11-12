@@ -40,7 +40,7 @@ if __name__ == '__main__':
 
 	fig = plt.gcf()
 	ax = plt.gca()
-	fig.set_size_inches(7.5, 3)
+	fig.set_size_inches(7.5, 2.5)
 
 	means = {k: get_mean(v, exclude='ant') for k, v in means.items()}
 	print(means)
@@ -56,7 +56,7 @@ if __name__ == '__main__':
 	labels = [LABELS.get(alg, alg) for alg in algs]
 	plt.bar(labels, vals, color=colors, edgecolor=Colors.gold, lw=0)
 	plt.ylabel('Average normalized return', labelpad=15)
-	plt.title('Offline RL Results')
+	# plt.title('Offline RL Results')
 
 	legend_labels = ['Behavior Cloning', 'Trajectory Optimization', 'Temporal Difference', 'Sequence Modeling']
 	colors = [Colors.grey, Colors.gold, Colors.red, Colors.blue]
@@ -65,7 +65,7 @@ if __name__ == '__main__':
 		bbox_to_anchor=(1.07, -.18), fancybox=False, framealpha=0, shadow=False, columnspacing=1.5, handlelength=1.5)
 
 	matplotlib.rcParams['hatch.linewidth'] = 7.5
-	ax.patches[-1].set_hatch('/')
+	# ax.patches[-1].set_hatch('/')
 
 	ax.spines['right'].set_visible(False)
 	ax.spines['top'].set_visible(False)
