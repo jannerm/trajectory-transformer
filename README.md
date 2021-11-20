@@ -1,6 +1,6 @@
 # Trajectory Transformer
 
-Code release for [Reinforcement Learning as One Big Sequence Modeling Problem](https://arxiv.org/abs/2106.02039).
+Code release for [Offline Reinforcement Learning as One Big Sequence Modeling Problem](https://arxiv.org/abs/2106.02039).
 
 ## Installation
 
@@ -145,11 +145,11 @@ To unmount the container, run `sudo umount -f ~/azure_mount; rm -r ~/azure_mount
 
 ## Reference
 ```
-@article{janner2021sequence,
-  title={Reinforcement Learning as One Big Sequence Modeling Problem},
-  author={Michael Janner and Qiyang Li and Sergey Levine},
-  journal={arXiv preprint arXiv:2106.02039},
-  year={2021},
+@inproceedings{janner2021sequence,
+  title = {Offline Reinforcement Learning as One Big Sequence Modeling Problem},
+  author = {Michael Janner and Qiyang Li and Sergey Levine},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year = {2021},
 }
 ```
 
