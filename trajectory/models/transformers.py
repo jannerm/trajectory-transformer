@@ -290,7 +290,6 @@ class ConditionalGPT(GPT):
         x = gx[:, self.observation_dim:]
         #### /goal
 
-        x = self.blocks(x)
         ## [ B x T x embedding_dim ]
         x = self.ln_f(x)
 
