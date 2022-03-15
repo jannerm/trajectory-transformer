@@ -2,6 +2,8 @@
 
 Code release for [Offline Reinforcement Learning as One Big Sequence Modeling Problem](https://arxiv.org/abs/2106.02039).
 
+**New**: Also see [Alexander Nikolin](https://github.com/Howuhh)'s fork with [attention caching and vectorized rollouts](https://github.com/Howuhh/faster-trajectory-transformer)!
+
 ## Installation
 
 All python dependencies are in [`environment.yml`](environment.yml). Install with:
