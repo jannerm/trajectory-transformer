@@ -2,7 +2,7 @@
 
 Code release for [Offline Reinforcement Learning as One Big Sequence Modeling Problem](https://arxiv.org/abs/2106.02039).
 
-**New**: Also see [Alexander Nikolin's](https://github.com/Howuhh) fork with [attention caching and vectorized rollouts](https://github.com/Howuhh/faster-trajectory-transformer)!
+**New**: Also see [Alexander Nikolin's fork](https://github.com/Howuhh/faster-trajectory-transformer) with attention caching and vectorized rollouts!
 
 ## Installation
 
